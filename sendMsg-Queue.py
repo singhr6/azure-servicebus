@@ -27,9 +27,9 @@ def send_a_list_of_messages(sender):
 
 def send_batch_message(sender):
     batch_message = sender.create_message_batch()
-    for _ in range(10):
+    for i in range(10):
         try:
-            batch_message.add_message(ServiceBusMessage("Message inside a ServiceBusMessageBatch"))
+            batch_message.add_message(ServiceBusMessage("Message inside a ServiceBusMessageBatch" + str(i) ))
         except ValueError:
             # ServiceBusMessageBatch object reaches max_size.
             # New ServiceBusMessageBatch object can be created here to send more data.
